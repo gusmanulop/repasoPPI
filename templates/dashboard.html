@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Dashboard</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/dashboard">HOME</a></li>
+            <li><a href="/smart">SMARTPHONES</a></li>
+            <li><a href="/register">SUSCRIBIRSE</a></li>
+        </ul>
+    </nav>
+
+    <header>
+        <h1>SAMSUNG PARAGUAY</h1>
+    </header>
+
+    <section id="carousel">
+        <div class="carousel-container">
+            <div class="carousel-slide">
+                <a href="/producto1">
+                    <img src="{{ url_for('static', filename='img/product1.jpg') }}" alt="Producto 1">
+                </a>
+                <a href="/producto2">
+                    <img src="{{ url_for('static', filename='img/product2.jpg') }}" alt="Producto 2">
+                </a>
+                <a href="/producto3">
+                    <img src="{{ url_for('static', filename='img/product3.jpg') }}" alt="Producto 3">
+                </a>
+            </div>
+        </div>
+    </section>
+    
+
+    <section id="brands">
+        <h2>EQUIPOS DISPONIBLES</h2>
+        <div class="brands-container">
+            <div class="brand">
+                <img src="{{ url_for('static', filename='img/s24.jpg') }}" alt="Samsung Galaxy">
+                <p>Samsung Galaxy S24 500Gb</p>
+            </div>
+            <div class="brand">
+                <img src="{{ url_for('static', filename='img/s25.jpg') }}" alt="Samsung Galaxy">
+                <p>Samsung Galaxy S25  1Tb</p>
+            </div>
+            <div class="brand">
+                <img src="{{ url_for('static', filename='img/s24.jpg') }}" alt="Samsung Galaxy">
+                <p>Samsung Galaxy S24 256Gb</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <script>
+        let index = 0;
+        const slides = document.querySelectorAll('.carousel-slide img');
+        const totalSlides = slides.length;
+
+        function showSlides() {
+            for (let i = 0; i < totalSlides; i++) {
+                slides[i].style.display = 'none';
+            }
+            index++;
+            if (index > totalSlides) { index = 1 }
+            slides[index - 1].style.display = 'block';
+            setTimeout(showSlides, 2000); // Cambia la imagen cada 2 segundos
+        }
+
+        showSlides();
+    </script>
+</body>
+</html>
